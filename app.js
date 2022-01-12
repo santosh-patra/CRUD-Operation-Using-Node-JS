@@ -15,7 +15,11 @@ app.get('/getAllUser',(req,res)=>{
             Result: result
         })
     })
-    .catch()
+    .catch(err=>{
+        res.status(400).json({
+            Error:err
+        })
+    })
 })
 // Post a new User
 app.post('/postUser',(req,res)=>{
@@ -34,7 +38,11 @@ app.post('/postUser',(req,res)=>{
             Message:"A new User Created Successfully"
         })
     })
-    .catch()
+    .catch(err=>{
+        res.status(400).json({
+            Error:err
+        })
+    })
 })
 // get a user by ID
 app.get('/getuser/:id',(req,res)=>{
@@ -45,7 +53,11 @@ app.get('/getuser/:id',(req,res)=>{
             Result: result
         })
     })
-    .catch()
+    .catch(err=>{
+        res.status(400).json({
+            Error:err
+        })
+    })
 })
 // Delete a user by ID
 app.post('/deleteUser/:id',(req,res)=>{
@@ -65,10 +77,18 @@ app.post('/deleteUser/:id',(req,res)=>{
                     Message:"User Deleted Successfully"
                 })    
             })
-            .catch()
+            .catch(err=>{
+                res.status(400).json({
+                    Error:err
+                })
+            })
         }
     })
-    .catch()
+    .catch(err=>{
+        res.status(400).json({
+            Error:err
+        })
+    })
 })
 // Delete all User
 app.post('/deleteAllUser',(req,res)=>{
@@ -87,10 +107,18 @@ app.post('/deleteAllUser',(req,res)=>{
                     Message:"All User Deleted Successfully"
                 })    
             })
-            .catch()
+            .catch(err=>{
+        res.status(400).json({
+            Error:err
+        })
+    })
         }
     })
-    .catch()
+    .catch(err=>{
+        res.status(400).json({
+            Error:err
+        })
+    })
 })
 
 mongoose.connect(url)
@@ -100,4 +128,6 @@ mongoose.connect(url)
         console.log("Server running on port 3000");
     })
 })
-.catch()
+.catch(err=>{
+    console.log(err)
+})
